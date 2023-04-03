@@ -7,26 +7,8 @@ public class Paddle : MonoBehaviour
 
     public float MoveSpeed;
 
-    // Update is called once per frame
-    void Update()
+    public void Move(Vector2 _direction)
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            MoveSpeed = 8;
-        }
-        else
-        {
-            MoveSpeed = 5;
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Translate(Vector2.left * MoveSpeed * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Translate(Vector2.right * MoveSpeed * Time.deltaTime);
-        }
+        transform.Translate(_direction * MoveSpeed * Time.deltaTime);
     }
 }

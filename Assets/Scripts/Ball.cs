@@ -11,9 +11,13 @@ public class Ball : MonoBehaviour
     public AudioClip PaddleHit;
     public AudioClip BlockBreak;
 
+    GameController gameController;
+
+
     private void Awake()
     {
         cc = GetComponent<CircleCollider2D>();
+        gameController = FindObjectOfType<GameController>();
     }
     // Update is called once per frame
     void Update()
@@ -46,7 +50,7 @@ public class Ball : MonoBehaviour
 
             if (transform.position.y < -Camera.main.orthographicSize)
             {
-                FindObjectOfType<GameController>().BallLost();
+                gameController.BallLost();
             }
         }
     }

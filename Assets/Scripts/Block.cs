@@ -7,13 +7,20 @@ public class Block : MonoBehaviour
     public int Hits = 1;
     public int ScoreValue = 100;
 
+    GameController gameController;
+
+
+    private void Awake()
+    {
+        gameController = FindObjectOfType<GameController>();
+    }
     public void OnHit()
     {
         Hits--;
 
         if (Hits <= 0)
         {
-            FindObjectOfType<GameController>().AddScore(ScoreValue);
+            gameController.AddScore(ScoreValue);
             Destroy(gameObject);
         }
     }

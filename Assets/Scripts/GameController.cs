@@ -8,12 +8,15 @@ public class GameController : MonoBehaviour
 
     public int Lives = 3;
     public UIController UIController;
+    public int InitialLives = 3;
 
     public Ball Ball;
     public Vector3 BallResetPosition;
 
     private bool isPlaying = false;
+    public bool IsPlaying { get { return isPlaying; } }
     private bool isPaused = false;
+    public bool IsPaused { get { return isPaused; } }
 
     public void Start()
     {
@@ -21,19 +24,6 @@ public class GameController : MonoBehaviour
         UIController.UpdateLives(Lives);
 
         PauseGame();
-    }
-
-    public void Update()
-    {
-        if(!isPaused && Input.GetKeyDown(KeyCode.Escape))
-        {
-            PauseGame();
-        }   
-
-        else if(isPaused && Input.anyKeyDown)
-        {
-            UnpauseGame();
-        } 
     }
 
     public void AddScore(int _value)
@@ -76,7 +66,7 @@ public class GameController : MonoBehaviour
 
     void ResetGame()
     {
-        Lives = 3;
+        Lives = InitialLives;
         Score = 0;
         UIController.UpdateScoreText(Score);
         UIController.UpdateLives(Lives);
