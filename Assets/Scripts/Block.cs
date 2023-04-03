@@ -21,7 +21,9 @@ public class Block : MonoBehaviour
         if (Hits <= 0)
         {
             gameController.AddScore(ScoreValue);
+            Instantiate(gameController.ExplosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            
         }
     }
     

@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     public Ball Ball;
     public Vector3 BallResetPosition;
 
+    public GameObject ExplosionPrefab;
+
     private bool isPlaying = false;
     public bool IsPlaying { get { return isPlaying; } }
     private bool isPaused = false;
