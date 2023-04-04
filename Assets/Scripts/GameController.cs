@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 
     public int Lives = 3;
     public UIController UIController;
+    public BlockController BlockController;
     public int InitialLives = 3;
 
     public Ball Ball;
@@ -24,7 +25,6 @@ public class GameController : MonoBehaviour
     {
         UIController.UpdateScoreText(Score);
         UIController.UpdateLives(Lives);
-
         PauseGame();
     }
 
@@ -69,11 +69,12 @@ public class GameController : MonoBehaviour
     void ResetGame()
     {
         Lives = InitialLives;
-        Score = 0;
+        Score = 0;        
         UIController.UpdateScoreText(Score);
         UIController.UpdateLives(Lives);
         UIController.HideStartGamePanel();
         UIController.HideGameOver();
+        BlockController.ResetBlocks();
     }
 
     public void PauseGame()
