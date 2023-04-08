@@ -8,13 +8,16 @@ public class GameController : MonoBehaviour
 
     public int Lives = 3;
     public UIController UIController;
-    public BlockController BlockController;
     public int InitialLives = 3;
+    
+   
 
     public Ball Ball;
     public Vector3 BallResetPosition;
 
     public GameObject ExplosionPrefab;
+    public GameObject BlockContainerPrefab;
+    GameObject BlockContainerInstance;
 
     private bool isPlaying = false;
     public bool IsPlaying { get { return isPlaying; } }
@@ -74,7 +77,8 @@ public class GameController : MonoBehaviour
         UIController.UpdateLives(Lives);
         UIController.HideStartGamePanel();
         UIController.HideGameOver();
-        BlockController.ResetBlocks();
+        Destroy(BlockContainerInstance);
+        BlockContainerInstance = Instantiate(BlockContainerPrefab);
     }
 
     public void PauseGame()
