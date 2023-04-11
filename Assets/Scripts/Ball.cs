@@ -54,6 +54,7 @@ public class Ball : MonoBehaviour
             if (transform.position.y < -Camera.main.orthographicSize)
             {
                 gameController.BallLost();
+                lastObjectHit = null;
                 FindObjectOfType<AudioPlayer>().Play(GameOver);
             }
         }

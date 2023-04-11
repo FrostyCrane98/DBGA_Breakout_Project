@@ -6,6 +6,7 @@ public class InputController : MonoBehaviour
 {
     GameController gameController;
     Paddle paddle;
+    public Ball ball;
 
     private void Awake()
     {
@@ -48,5 +49,10 @@ public class InputController : MonoBehaviour
                 gameController.PauseGame();
             }
         }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            ball.enabled = true;
+        }
+
     }
 }

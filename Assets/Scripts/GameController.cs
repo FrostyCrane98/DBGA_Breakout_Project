@@ -9,8 +9,6 @@ public class GameController : MonoBehaviour
     public int Lives = 3;
     public UIController UIController;
     public int InitialLives = 3;
-    
-   
 
     public Ball Ball;
     public Vector3 BallResetPosition;
@@ -63,6 +61,7 @@ public class GameController : MonoBehaviour
         //reset position of the ball
         Ball.transform.position = BallResetPosition;
         Vector3 currentVelocity = Ball.Velocity;
+        Ball.enabled = false;
         currentVelocity.y = Mathf.Abs(currentVelocity.y);
         Ball.Velocity = currentVelocity;       
 
