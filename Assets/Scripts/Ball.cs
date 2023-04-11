@@ -37,12 +37,14 @@ public class Ball : MonoBehaviour
                 {
                     Velocity.y = Mathf.Abs(Velocity.y);
                     FindObjectOfType<AudioPlayer>().Play(PaddleHit);
+                    gameController.ResetCombo();
                 }
 
                 else if (hit.transform.GetComponent<Block>())
                 {
                     hit.transform.GetComponent<Block>().OnHit();
                     FindObjectOfType<AudioPlayer>().Play(BlockBreak);
+                    gameController.AddCombo();
                 }
                 else
                     FindObjectOfType<AudioPlayer>().Play(WallHit);

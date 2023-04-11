@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public Text ScoreText;
+    public Text ComboCounter;
 
     public List<GameObject> LifeIcons = new List<GameObject>();
 
@@ -18,6 +19,11 @@ public class UIController : MonoBehaviour
         HideGameOver();
         HidePausePanel();
         ShowStartGamePanel();
+    }
+
+    public void UpdateComboCounter(int _value)
+    {
+        ComboCounter.text = "X" + _value.ToString();
     }
 
     public void UpdateScoreText(int _value)

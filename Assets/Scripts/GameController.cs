@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public int Score = 0;
-
+    public int Combo = 0;
     public int Lives = 3;
     public UIController UIController;
     public int InitialLives = 3;
@@ -26,15 +26,35 @@ public class GameController : MonoBehaviour
 
     public void Start()
     {
+        UIController.UpdateComboCounter(Combo);
         UIController.UpdateScoreText(Score);
         UIController.UpdateLives(Lives);
         PauseGame();
     }
 
+    public void AddCombo()
+    {
+        Combo ++;
+
+        UIController.UpdateComboCounter(Combo);
+
+    }
+
+    public void ResetCombo()
+    {
+        Combo = 0;
+        UIController.UpdateComboCounter(Combo);
+    }
     public void AddScore(int _value)
     {
-        Score += _value;
-
+        if (Combo == 0)
+        {
+            Score += _value;
+        }
+        else
+        {
+            Score += _value * Combo;
+        }
         UIController.UpdateScoreText(Score);
     }
 
@@ -53,6 +73,9 @@ public class GameController : MonoBehaviour
         {
             GameOver();
         }
+
+        //reset combo counter
+        ResetCombo();
     }
 
     void GameOver()
@@ -72,7 +95,8 @@ public class GameController : MonoBehaviour
     void ResetGame()
     {
         Lives = InitialLives;
-        Score = 0;        
+        Score = 0;
+        Combo = 0;
         UIController.UpdateScoreText(Score);
         UIController.UpdateLives(Lives);
         UIController.HideStartGamePanel();
