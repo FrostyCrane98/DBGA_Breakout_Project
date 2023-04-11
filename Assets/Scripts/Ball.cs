@@ -10,6 +10,7 @@ public class Ball : MonoBehaviour
     public AudioClip WallHit;
     public AudioClip PaddleHit;
     public AudioClip BlockBreak;
+    public AudioClip GameOver;
 
     GameController gameController;
 
@@ -53,6 +54,7 @@ public class Ball : MonoBehaviour
             if (transform.position.y < -Camera.main.orthographicSize)
             {
                 gameController.BallLost();
+                FindObjectOfType<AudioPlayer>().Play(GameOver);
             }
         }
     }

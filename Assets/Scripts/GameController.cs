@@ -64,7 +64,8 @@ public class GameController : MonoBehaviour
         Ball.transform.position = BallResetPosition;
         Vector3 currentVelocity = Ball.Velocity;
         currentVelocity.y = Mathf.Abs(currentVelocity.y);
-        Ball.Velocity = currentVelocity;
+        Ball.Velocity = currentVelocity;       
+
 
         //lose a life
         Lives--;
